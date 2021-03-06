@@ -3,20 +3,19 @@ import "./style.css";
 import axios from "axios";
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-  }
-  
-  async componentDidMount(){
-    const countryListNames = 
+    this.state({countryList : []});
   }
 
-  render(){
-  return (
-    <select>
-    {countryNames}
-    </select>
-  );}
+  async componentDidMount() {
+    const countryListNames = await axios.get("https://restcountries.eu/rest/v2/all");
+    countryListNames.data.forEach((value) => {this.setState({countryList : this.state.countryList.concat(value.name)})});
+  }
+
+  render() {
+    return <select>{countryNames}</select>;
+  }
 }
 
-export default App ; 
+export default App;
