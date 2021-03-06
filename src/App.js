@@ -5,7 +5,7 @@ import axios from "axios";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countryList: [] , name : "", capital : "" , region : "" , subregion : "" , population : "" , flag : ""};
+    this.state = { countryList: [] , name : "", capital : "" , region : "" , subregion : "" , population : "" , flag : "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Foriginal%2F000%2F022%2F747%2Fdownload.jpg"};
   }
 
 
@@ -38,9 +38,9 @@ class App extends React.Component {
     <img className="resultDisplay image" src = {this.state.flag} />
     <div className="resultDisplay partition">NAME : <div>{this.state.name}</div></div>
     <div className="resultDisplay partition">CAPITAL : <div>{this.state.capital}</div></div>
-    <div className="resultDisplay partition">REGION :</div>
-    <div className="resultDisplay partition">SUBREGION :</div>
-    <div className="resultDisplay population partition ">POPULATION :</div>
+    <div className="resultDisplay partition">REGION :  <div>{this.state.region}</div></div>
+    <div className="resultDisplay partition">SUBREGION :<div>{this.state.subregion}</div></div>
+    <div className="resultDisplay population partition ">POPULATION :<div>{this.state.population}</div></div>
     </div>
     </div> );
   }
