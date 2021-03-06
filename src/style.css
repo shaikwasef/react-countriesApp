@@ -25,11 +25,11 @@ body{
 .partition{
   display : grid ;
   grid-template-columns: 150px auto ;
-
 }
+
 .image{
   height : 100%;
-  width : 100%;
+  width : inherit;
 }
 
 .displayBox{
