@@ -21,7 +21,7 @@ class App extends React.Component {
     const countryNames = this.state.countryList.map((value, key) => {
       return <option key={key}>{value}</option>;
     });
-    return <select className={nameList}>{countryNames}</select>;
+    return <select className="nameList">{countryNames}</select>;
   }
 }
 
