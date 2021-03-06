@@ -36,8 +36,8 @@ class App extends React.Component {
     <select onChange = {() => this.selectedOptionInfo(event)}>{countryNames}</select>
     <div className = "displayBox">
     <div className="resultDisplay"></div>
-    <div className="resultDisplay partition">NAME : {this.state.name}</div>
-    <div className="resultDisplay partition">CAPITAL : {this.state.capital}</div>
+    <div className="resultDisplay partition">NAME : <div>{this.state.name}</div></div>
+    <div className="resultDisplay partition">CAPITAL : <div>{this.state.capital}</div></div>
     <div className="resultDisplay partition">REGION :</div>
     <div className="resultDisplay partition">SUBREGION :</div>
     <div className="resultDisplay population partition ">POPULATION :</div>
