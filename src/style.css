@@ -21,11 +21,9 @@ body{
 .population{
   border-bottom : 2px solid black;
 }
-.parition{
-  display : flex ;
-  flex-direction : row ;
-  align-items : center ;
-  line-height : 50px ;
+.partition{
+  display : grid ;
+  grid-template-columns: 150px auto ;
 }
 
 .displayBox{
