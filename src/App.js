@@ -25,12 +25,12 @@ class App extends React.Component {
     return (<div className = "container">
     <select>{countryNames}</select>
     <div className = "displayBox">
-    <flag></flag>
-    <name></name>
-    <capital></capital>
-    <region></region>
-    <subregion></subregion>
-    <population></population>
+    <div className="resultDisplay"></div>
+    <div className="resultDisplay partition"></div>
+    <div className="resultDisplay partition"></div>
+    <div className="resultDisplay partition"></div>
+    <div className="resultDisplay partition"></div>
+    <div className="resultDisplay population partition "></div>
     </div>
     </div> );
   }

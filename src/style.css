@@ -14,29 +14,12 @@ body{
   row-gap : 40px;
   width : 400px;
 }
-flag{
-  grid-area : flag ;
+.resultDisplay{
   border : 2px solid black;
+  border-bottom : none ;
 }
-name{
-  grid-area : flag ;
-  border : 2px solid black;
-}
-capital{
-  grid-area : flag ;
-  border : 2px solid black;
-}
-region{
-  grid-area : flag ;
-  border : 2px solid black;
-}
-subregion{
-  grid-area : flag ;
-  border : 2px solid black;
-}
-population{
-  grid-area : flag ;
-  border : 2px solid black;
+.population{
+  border-bottom : 2px solid black;
 }
 
 .displayBox{
