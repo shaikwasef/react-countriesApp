@@ -35,7 +35,7 @@ class App extends React.Component {
     return (<div className = "container">
     <select onChange = {() => this.selectedOptionInfo(event)}>{countryNames}</select>
     <div className = "displayBox">
-    <div className="resultDisplay"></div>
+    <img className="resultDisplay image" src = {this.state.flag} />
     <div className="resultDisplay partition">NAME : <div>{this.state.name}</div></div>
     <div className="resultDisplay partition">CAPITAL : <div>{this.state.capital}</div></div>
     <div className="resultDisplay partition">REGION :</div>

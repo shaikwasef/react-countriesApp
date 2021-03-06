@@ -17,6 +17,7 @@ body{
 .resultDisplay{
   border : 2px solid black;
   border-bottom : none ;
+  line-height: 50px; 
 }
 .population{
   border-bottom : 2px solid black;
@@ -24,6 +25,11 @@ body{
 .partition{
   display : grid ;
   grid-template-columns: 150px auto ;
+
+}
+.image{
+  height : 100%;
+  width : 100%;
 }
 
 .displayBox{
