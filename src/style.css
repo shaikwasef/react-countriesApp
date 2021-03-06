@@ -3,10 +3,52 @@ body{
   top: 50px;
   background: #00ffb3 ;
   display: flex;
-  flex-direction: column;
-  align-items : center;
-  row-gap: 40px;
+  flex-direction: row;
+  align-items : center ;
+  justify-content : center; 
 }
-.nameList{
-  color : red ;
+.container{
+  display : flex ;
+  flex-direction : column;
+  align-items: center;
+  row-gap : 40px;
+  width : 400px;
+}
+flag{
+  grid-area : flag ;
+  border : 2px solid black;
+}
+name{
+  grid-area : flag ;
+  border : 2px solid black;
+}
+capital{
+  grid-area : flag ;
+  border : 2px solid black;
+}
+region{
+  grid-area : flag ;
+  border : 2px solid black;
+}
+subregion{
+  grid-area : flag ;
+  border : 2px solid black;
+}
+population{
+  grid-area : flag ;
+  border : 2px solid black;
+}
+
+.displayBox{
+  height : 500px ;
+  width : inherit;
+  display : grid ;
+  grid-template-rows :  250px 50px 50px 50px 50px;
+  grid-template-areas : 
+  "flag"
+  "name"
+  "capital"
+  "region"
+  "subregion"
+  "population";
 }

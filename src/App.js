@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = { countryList: [] };
   }
 
+
   async componentDidMount() {
     const countryListNames = await axios.get(
       "https://restcountries.eu/rest/v2/all"
@@ -21,7 +22,17 @@ class App extends React.Component {
     const countryNames = this.state.countryList.map((value, key) => {
       return <option key={key}>{value}</option>;
     });
-    return <select className="nameList">{countryNames}</select>;
+    return (<div className = "container">
+    <select>{countryNames}</select>
+    <div className = "displayBox">
+    <flag></flag>
+    <name></name>
+    <capital></capital>
+    <region></region>
+    <subregion></subregion>
+    <population></population>
+    </div>
+    </div> );
   }
 }
 
