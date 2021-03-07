@@ -5,44 +5,58 @@ import axios from "axios";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countryList: [] , name : "", capital : "" , region : "" , subregion : "" , population : "" , flag : "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Foriginal%2F000%2F022%2F747%2Fdownload.jpg"};
+    this.state = { countryList: [] };
   }
 
-
-  async componentDidMount() {
-    const countryListNames = await axios.get(
-      "https://restcountries.eu/rest/v2/all"
-    );
-    countryListNames.data.forEach(value => {
-      this.setState({ countryList: this.state.countryList.concat(value.name) });
-    });
+  async selectedOptionInfo(event) {
+    if (event.keyCode == 13) {
+      this.setState({countryList : []});
+      const url = "https://restcountries.eu/rest/v2/name/" + event.target.value;
+      var flagLink = "";
+      const info = await axios.get(url);
+      info.data.forEach(value => {
+        this.setState({countryList : this.state.countryList.concat(value)});
+      });
+    }
   }
-
-  async selectedOptionInfo(event){
-    const url = "https://restcountries.eu/rest/v2/name/" + (event.target.options[event.target.selectedIndex].text);
-    var flagLink = "";
-    const info = await axios.get(url);
-    info.data.forEach((value) => {
-      this.setState({name : value.name , capital : value.capital , region : value.region , subregion : value.subregion , population : value.population , flag : value.flag});
-    })
-  }
-
 
   render() {
     const countryNames = this.state.countryList.map((value, key) => {
       return <option key={key}>{value}</option>;
     });
-    return (<div className = "container">
-    <select onChange = {() => this.selectedOptionInfo(event)}>{countryNames}</select>
-    <div className = "displayBox">
-    <img className="resultDisplay image" src = {this.state.flag} />
-    <div className="resultDisplay partition">NAME : <div>{this.state.name}</div></div>
-    <div className="resultDisplay partition">CAPITAL : <div>{this.state.capital}</div></div>
-    <div className="resultDisplay partition">REGION :  <div>{this.state.region}</div></div>
-    <div className="resultDisplay partition">SUBREGION :<div>{this.state.subregion}</div></div>
-    <div className="resultDisplay population partition ">POPULATION :<div>{this.state.population}</div></div>
-    </div>
-    </div> );
+    var obj = this.state.countryList;
+    obj.sort((a,b) => b.population -a.population);
+    const tableContent = obj.map((data)=> 
+    {return(
+      <tr>
+      <th><img src = {data.flag} style={{width : "100px"}}/></th>
+      <th>{data.name}</th>
+      <th>{data.capital}</th>
+      <th>{data.region}</th>
+      <th>{data.subregion}</th>
+      <th>{data.population}</th>
+      </tr>
+    );})
+    
+    return (
+      <div className="container">
+        <input
+          onKeyPress={() => this.selectedOptionInfo(event)}
+          placeholder="enter country name"
+        />
+        <table>
+          <tr>
+            <th>FLAG</th>
+            <th>NAME</th>
+            <th>CAPITAL</th>
+            <th>REGION</th>
+            <th>SUBREGION</th>
+            <th>POPULATION</th>
+          </tr>
+          {tableContent}
+        </table>
+      </div>
+    );
   }
 }
 
