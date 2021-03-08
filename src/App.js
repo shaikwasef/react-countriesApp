@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = { countryList: [] };
   }
 
+  onDebounceChange = debounce(this.selectedOptionInfo,1000);
   async selectedOptionInfo(event) {
     if (event.keyCode == 13) {
       this.setState({countryList : []});
