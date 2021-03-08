@@ -1,17 +1,14 @@
 import React, {useCallback} from "react";
 import "./style.css";
 import axios from "axios";
-import debounce from "lodash.debounce"
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { countryList: [] };
-    this.onDebounceChange = this.onDebounceChange.bind(this);
-    this.selectedOptionInfo = this.selectedOptionInfo.bind(this);
   }
 
-  onDebounceChange = debounce(this.selectedOptionInfo,1000);
 
   async selectedOptionInfo(event) {
     if (event.keyCode == 13) {
@@ -46,7 +43,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <input
-          onKeyPress={this.onDebounceChange}
+          onKeyPress={() => this.selectedOptionInfo(event)}
           placeholder="enter country name"
         />
         <table>
