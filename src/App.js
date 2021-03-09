@@ -1,6 +1,7 @@
 import React, {useCallback} from "react";
 import "./style.css";
 import axios from "axios";
+import debounce from "lodash.debounce";
 
 
 class App extends React.Component {
@@ -10,8 +11,9 @@ class App extends React.Component {
   }
 
 
-  async selectedOptionInfo(event) {
-    if (event.keyCode == 13) {
+  selectedOptionInfo(event) {
+    debounce( async (event) => {
+      console.log("yes");
       this.setState({countryList : []});
       const url = "https://restcountries.eu/rest/v2/name/" + event.target.value;
       var flagLink = "";
@@ -19,7 +21,7 @@ class App extends React.Component {
       info.data.forEach(value => {
         this.setState({countryList : this.state.countryList.concat(value)});
       });
-    }
+    },1000);
   }
 
   render() {
