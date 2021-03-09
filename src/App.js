@@ -8,12 +8,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { countryList: [] };
+    this.debounceChange = debounce(this.debounceChange.bind(this), 500);
   }
-
-
-  selectedOptionInfo(event) {
-    debounce( async (event) => {
-      console.log("yes");
+  
+  async debounceChange(event) {
       this.setState({countryList : []});
       const url = "https://restcountries.eu/rest/v2/name/" + event.target.value;
       var flagLink = "";
@@ -21,7 +19,10 @@ class App extends React.Component {
       info.data.forEach(value => {
         this.setState({countryList : this.state.countryList.concat(value)});
       });
-    },1000);
+  }
+  
+  selectedOptionInfo(event) {
+      this.debounceChange(event);
   }
 
   render() {
